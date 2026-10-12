@@ -14,9 +14,12 @@ export const metadata: Metadata = {
   description:
     "Manage properties, units, tenants, leases, rent collection, and maintenance with HomeOwner365—your complete property management platform.",
   icons: {
-    icon: "/logo-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo-icon.png", type: "image/png" },
+    ],
     shortcut: "/logo-icon.png",
-    apple: "/logo-icon.png",
+    apple: "/apple-icon.png",
   },
 };
 
