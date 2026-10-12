@@ -6,7 +6,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Loader2, ArrowRight, User, Building, MapPin, FileText, CheckCircle2 } from "lucide-react";
+import { Loader2, ArrowRight, User, Building, MapPin, FileText } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {

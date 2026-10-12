@@ -2,20 +2,23 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Sidebar } from "@/components/layout/sidebar";
-import { Header } from "@/components/layout/header";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SWRProvider } from "@/components/providers/swr-provider";
+import { AppLayoutWrapper } from "@/components/layout/app-layout-wrapper";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PropCRM — Property Intelligence Platform",
-  description: "Enterprise property management and portfolio intelligence",
+  title: "HomeOwner365 | Complete Property Management",
+  description:
+    "Manage properties, units, tenants, leases, rent collection, and maintenance with HomeOwner365—your complete property management platform.",
+  icons: {
+    icon: "/logo-icon.png",
+    shortcut: "/logo-icon.png",
+    apple: "/logo-icon.png",
+  },
 };
-
-import { Suspense } from "react";
 
 export default function RootLayout({
   children,
@@ -24,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className={`${manrope.className} h-full antialiased text-foreground bg-background [font-variant-numeric:tabular-nums]`}>
+      <body
+        suppressHydrationWarning
+        className={`${manrope.className} h-full antialiased text-foreground bg-background [font-variant-numeric:tabular-nums]`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -32,19 +38,7 @@ export default function RootLayout({
         >
           <SWRProvider>
             <TooltipProvider>
-              <div className="flex h-screen overflow-hidden">
-                <Suspense fallback={<div className="w-[260px] h-full bg-sidebar-navy" />}>
-                  <Sidebar />
-                </Suspense>
-                <div className="flex flex-col flex-1 overflow-hidden">
-                  <Suspense fallback={<div className="h-14 w-full border-b bg-background" />}>
-                    <Header />
-                  </Suspense>
-                  <main className="flex-1 overflow-y-auto bg-background">
-                    {children}
-                  </main>
-                </div>
-              </div>
+              <AppLayoutWrapper>{children}</AppLayoutWrapper>
               <Toaster position="top-right" richColors />
             </TooltipProvider>
           </SWRProvider>
